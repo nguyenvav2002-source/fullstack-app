@@ -1,0 +1,31 @@
+<main class="page-shell">
+  <section class="status-panel">
+    <div>
+      <p class="eyebrow">Angular + Spring Boot + MySQL</p>
+      <h1>Hello World</h1>
+    </div>
+
+    <div class="message-box" *ngIf="hello(); else waitingState">
+      <p class="message">{{ hello()?.message }}</p>
+      <dl>
+        <div>
+          <dt>Database</dt>
+          <dd>{{ hello()?.databaseStatus }}</dd>
+        </div>
+        <div>
+          <dt>Request count</dt>
+          <dd>{{ hello()?.requestCount }}</dd>
+        </div>
+      </dl>
+    </div>
+
+    <ng-template #waitingState>
+      <p class="message muted" *ngIf="loading()">Dang goi backend...</p>
+      <p class="message error" *ngIf="error()">{{ error() }}</p>
+    </ng-template>
+
+    <button type="button" (click)="loadHello()" [disabled]="loading()">
+      {{ loading() ? 'Dang tai...' : 'Goi lai API' }}
+    </button>
+  </section>
+</main>

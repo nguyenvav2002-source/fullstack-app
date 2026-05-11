@@ -1,0 +1,23 @@
+# Dependencies
+node_modules/
+
+# Angular build output
+frontend/dist/
+frontend/.angular/
+
+# Spring Boot build output
+backend/target/
+
+# Logs
+*.log
+npm-debug.log*
+
+# IDE and OS files
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Environment files
+.env
+.env.*
