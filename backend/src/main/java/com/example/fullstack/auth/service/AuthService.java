@@ -16,7 +16,7 @@ import java.util.HexFormat;
 @Service
 public class AuthService {
     private static final String REGISTER_SUCCESS_MESSAGE = "đã tạo tk đăng nhập thành công";
-    private static final String LOGIN_SUCCESS_MESSAGE = "Đã đăng nhập thành công";
+    private static final String LOGIN_SUCCESS_MESSAGE = "hello world";
     private static final String LOGIN_ERROR_MESSAGE = "tài khoản hoặc mật khẩu đã bị login sai xin vui lòng thử lại";
 
     private final AuthUserRepository authUserRepository;

@@ -1,8 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, signal, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthMode, AuthResponse } from './auth.models';
 import { AuthService } from './auth.service';
+import { AuthStateService } from './auth-state.service';
 
 @Component({
   selector: 'app-auth',
@@ -10,8 +12,10 @@ import { AuthService } from './auth.service';
   imports: [CommonModule, FormsModule],
   templateUrl: './auth.component.html',
 })
-export class AuthComponent {
+export class AuthComponent implements OnInit {
   private readonly authService = inject(AuthService);
+  private readonly authStateService = inject(AuthStateService);
+  private readonly router = inject(Router);
 
   readonly loading = signal(false);
   readonly error = signal('');
@@ -20,6 +24,14 @@ export class AuthComponent {
 
   username = '';
   password = '';
+
+  ngOnInit(): void {
+    // Kiểm tra nếu đã login, chuyển đến home
+    this.authStateService.checkAuthStatus();
+    if (this.authStateService.isAuthenticated()) {
+      this.router.navigate(['/home']);
+    }
+  }
 
   setMode(mode: AuthMode): void {
     this.mode.set(mode);
@@ -37,8 +49,14 @@ export class AuthComponent {
 
   login(): void {
     this.submit('login', (response) => {
-      this.successMessage.set(response.message);
+      this.successMessage.set('Đăng nhập thành công!');
       this.error.set('');
+      // Lưu trạng thái xác thực
+      this.authStateService.setAuthenticated(true, this.username);
+      // Chuyển đến trang home sau 500ms
+      setTimeout(() => {
+        this.router.navigate(['/home']);
+      }, 500);
     });
   }
 
@@ -63,7 +81,7 @@ export class AuthComponent {
       },
       error: (response) => {
         this.error.set(
-          response.error?.message ?? 'tài khoản hoặc mật khẩu đã bị login sai xin vui lòng thử lại'
+          response.error?.message ?? 'Tài khoản hoặc mật khẩu không chính xác. Vui lòng thử lại.'
         );
         this.loading.set(false);
       },

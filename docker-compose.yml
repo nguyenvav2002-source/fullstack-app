@@ -31,6 +31,6 @@ services:
       DB_NAME: fullstack_db
       DB_USERNAME: app_user
       DB_PASSWORD: app_password
-      FRONTEND_ORIGIN: http://localhost:4200
+      FRONTEND_ORIGIN: "*"
     ports:
       - "8080:8080"

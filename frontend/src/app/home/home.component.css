@@ -1,0 +1,62 @@
+/* Color Palette */
+:root {
+  --clover: #336B4A;
+  --ice: #EFEFEF;
+  --gold: #A99D5B;
+  --cream: #E8E6DC;
+  --navy: #2E445A;
+  --mint: #C7DFD5;
+}
+
+/* Custom color classes */
+.text-clover { color: var(--clover); }
+.text-ice { color: var(--ice); }
+.text-gold { color: var(--gold); }
+.text-cream { color: var(--cream); }
+.text-navy { color: var(--navy); }
+.text-mint { color: var(--mint); }
+
+.bg-clover { background-color: var(--clover); }
+.bg-clover-dark { background-color: #2a5539; }
+.bg-ice { background-color: var(--ice); }
+.bg-gold { background-color: var(--gold); }
+.bg-gold-dark { background-color: #8e7e47; }
+.bg-cream { background-color: var(--cream); }
+.bg-navy { background-color: var(--navy); }
+.bg-mint { background-color: var(--mint); }
+
+.border-clover { border-color: var(--clover); }
+.border-gold { border-color: var(--gold); }
+
+/* Hero section background animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+h2 {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+h3 {
+  animation: fadeInUp 0.8s ease-out 0.1s backwards;
+}
+
+p {
+  animation: fadeInUp 0.8s ease-out 0.2s backwards;
+}
+
+button {
+  animation: fadeInUp 0.8s ease-out 0.3s backwards;
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}

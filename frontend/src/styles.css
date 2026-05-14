@@ -1,16 +1,16 @@
 @import "tailwindcss";
 
 @theme {
-  --color-app-bg: #f6f8fa;
-  --color-app-surface: #ffffff;
-  --color-app-text: #172033;
-  --color-app-muted: #586174;
-  --color-app-border: #dde3ea;
-  --color-app-primary: #2563eb;
-  --color-app-primary-hover: #1d4ed8;
-  --color-app-success: #14804a;
+  --color-app-bg: #1a2332;
+  --color-app-surface: #243447;
+  --color-app-text: #e8e6dc;
+  --color-app-muted: #a99d5b;
+  --color-app-border: #3a4a5f;
+  --color-app-primary: #a99d5b;
+  --color-app-primary-hover: #8e7e47;
+  --color-app-success: #2a5539;
   --color-app-error: #c2410c;
-  --color-app-disabled: #aeb7c4;
+  --color-app-disabled: #4a5a6f;
 
   --radius-panel: 8px;
   --radius-control: 6px;
