@@ -12,6 +12,9 @@ backend/target/
 *.log
 npm-debug.log*
 
+# Local database files
+data/mysql/
+
 # IDE and OS files
 .idea/
 .vscode/

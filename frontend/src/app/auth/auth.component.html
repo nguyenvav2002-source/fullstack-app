@@ -1,0 +1,110 @@
+<main class="min-h-screen bg-app-bg text-app-text">
+  <div class="mx-auto grid min-h-screen w-full max-w-6xl grid-cols-1 lg:grid-cols-[1fr_520px]">
+    <section class="hidden border-r border-app-border bg-app-surface px-10 py-12 lg:flex lg:flex-col lg:justify-between">
+      <div>
+        <p class="text-label uppercase text-app-muted">Angular + Spring Boot + MySQL</p>
+        <h1 class="mt-4 max-w-xl text-title text-app-text">
+          Module đăng ký và đăng nhập tài khoản
+        </h1>
+        <p class="mt-6 max-w-lg text-body text-app-muted">
+          Tài khoản được lưu trong MySQL, backend kiểm tra username và password trước khi cho phép truy cập.
+        </p>
+      </div>
+
+      <div class="grid gap-4">
+        <div class="rounded-panel border border-app-border bg-app-bg p-5">
+          <p class="text-label text-app-muted">Register rule</p>
+          <p class="mt-2 text-body font-semibold text-app-text">
+            Đăng ký thành công sẽ hiện thông báo đã tạo tài khoản.
+          </p>
+        </div>
+        <div class="rounded-panel border border-app-border bg-app-bg p-5">
+          <p class="text-label text-app-muted">Login rule</p>
+          <p class="mt-2 text-body font-semibold text-app-text">
+            Login đúng hiện thông báo thành công, login sai hiện cảnh báo.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="flex min-h-screen items-center justify-center p-4 sm:p-page">
+      <div class="w-full max-w-[520px] rounded-panel border border-app-border bg-app-surface p-6 shadow-sm sm:p-panel">
+        <div>
+          <p class="text-label uppercase text-app-muted">Account Access</p>
+          <h2 class="mt-2 text-title text-app-text">
+            {{ mode() === 'login' ? 'Đăng nhập' : 'Đăng ký' }}
+          </h2>
+        </div>
+
+        <div class="mt-6 grid grid-cols-2 rounded-control border border-app-border bg-app-bg p-1">
+          <button
+            class="h-10 rounded-control text-body font-semibold transition"
+            [class.bg-app-primary]="mode() === 'login'"
+            [class.text-white]="mode() === 'login'"
+            [class.text-app-muted]="mode() !== 'login'"
+            type="button"
+            (click)="setMode('login')"
+          >
+            Đăng nhập
+          </button>
+          <button
+            class="h-10 rounded-control text-body font-semibold transition"
+            [class.bg-app-primary]="mode() === 'register'"
+            [class.text-white]="mode() === 'register'"
+            [class.text-app-muted]="mode() !== 'register'"
+            type="button"
+            (click)="setMode('register')"
+          >
+            Đăng ký
+          </button>
+        </div>
+
+        <form
+          class="mt-6 space-y-4"
+          (ngSubmit)="mode() === 'login' ? login() : register()"
+        >
+          <label class="block">
+            <span class="text-label text-app-muted">Username</span>
+            <input
+              class="mt-2 h-11 w-full rounded-control border border-app-border bg-white px-3 text-body text-app-text outline-none transition focus:border-app-primary"
+              name="username"
+              type="text"
+              autocomplete="username"
+              [(ngModel)]="username"
+              required
+            />
+          </label>
+
+          <label class="block">
+            <span class="text-label text-app-muted">Password</span>
+            <input
+              class="mt-2 h-11 w-full rounded-control border border-app-border bg-white px-3 text-body text-app-text outline-none transition focus:border-app-primary"
+              name="password"
+              type="password"
+              [autocomplete]="mode() === 'login' ? 'current-password' : 'new-password'"
+              [(ngModel)]="password"
+              required
+            />
+          </label>
+
+          <div class="rounded-control border border-app-border bg-app-bg p-4" *ngIf="successMessage() || error()">
+            <p class="text-body font-semibold text-app-success" *ngIf="successMessage()">
+              {{ successMessage() }}
+            </p>
+            <p class="text-body font-semibold text-app-error" *ngIf="error()">
+              {{ error() }}
+            </p>
+          </div>
+
+          <button
+            class="inline-flex h-11 w-full items-center justify-center rounded-control bg-app-primary px-5 text-body font-semibold text-white transition hover:bg-app-primary-hover disabled:cursor-wait disabled:bg-app-disabled"
+            type="submit"
+            [disabled]="loading()"
+          >
+            {{ loading() ? 'Đang xử lý...' : (mode() === 'login' ? 'Đăng nhập' : 'Đăng ký') }}
+          </button>
+        </form>
+      </div>
+    </section>
+  </div>
+</main>

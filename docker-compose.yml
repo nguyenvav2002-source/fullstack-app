@@ -10,7 +10,8 @@ services:
     ports:
       - "3306:3306"
     volumes:
-      - mysql-data:/var/lib/mysql
+      - ./data/mysql:/var/lib/mysql
+      - ./data/mysql-init:/docker-entrypoint-initdb.d:ro
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uapp_user", "-papp_password"]
       interval: 10s
@@ -33,6 +34,3 @@ services:
       FRONTEND_ORIGIN: http://localhost:4200
     ports:
       - "8080:8080"
-
-volumes:
-  mysql-data:
