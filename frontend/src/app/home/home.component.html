@@ -1,192 +1,365 @@
-<!-- Navigation Header -->
-<header class="bg-navy border-b-4 border-clover sticky top-0 z-50 shadow-lg">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex justify-between items-center h-16">
-      <!-- Logo -->
-      <div class="flex-shrink-0">
-        <h1 class="text-2xl font-bold text-cream">ĐỒNG TÂM</h1>
-        <p class="text-xs text-gold font-semibold">Thiết kế nội thất</p>
-      </div>
+<!-- TOP BAR -->
+<div class="topbar">
+  <span>CÔNG TY THIẾT KẾ NỘI THẤT ĐỒNG TÂM</span>
+  <span class="topbar-phone">☎ 0909 123 456 &nbsp;|&nbsp; Phục vụ 24/7</span>
+</div>
 
-      <!-- Desktop Navigation -->
-      <nav class="hidden md:flex space-x-8 items-center">
-        <a href="#" class="text-cream hover:text-gold font-semibold transition">Trang chủ</a>
-        <a href="#services" class="text-cream hover:text-gold font-semibold transition">Dịch vụ</a>
-        <a href="#portfolio" class="text-cream hover:text-gold font-semibold transition">Dự án</a>
-        <a href="#contact" class="text-cream hover:text-gold font-semibold transition">Liên hệ</a>
-        <div class="text-cream font-semibold">
-          {{ currentUser()?.username || 'User' }}
-        </div>
-        <button 
-          (click)="logout()"
-          class="bg-clover hover:bg-clover-dark text-cream px-6 py-2 rounded-lg font-semibold transition">
-          Đăng xuất
-        </button>
-      </nav>
-
-      <!-- Mobile Menu Button -->
-      <button 
-        (click)="toggleMobileMenu()"
-        class="md:hidden p-2 rounded-lg bg-clover hover:bg-clover-dark transition"
-      >
-        <svg class="w-6 h-6 text-cream" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-        </svg>
-      </button>
-    </div>
-
-    <!-- Mobile Navigation -->
-    <nav 
-      *ngIf="mobileMenuOpen"
-      class="md:hidden pb-4 space-y-2 bg-clover-dark rounded-lg"
-    >
-      <a (click)="closeMobileMenu()" href="#" class="block px-4 py-2 text-cream hover:bg-clover rounded-lg transition">Trang chủ</a>
-      <a (click)="closeMobileMenu()" href="#services" class="block px-4 py-2 text-cream hover:bg-clover rounded-lg transition">Dịch vụ</a>
-      <a (click)="closeMobileMenu()" href="#portfolio" class="block px-4 py-2 text-cream hover:bg-clover rounded-lg transition">Dự án</a>
-      <a (click)="closeMobileMenu()" href="#contact" class="block px-4 py-2 text-cream hover:bg-clover rounded-lg transition">Liên hệ</a>
-      <div class="px-4 py-2 text-cream font-semibold">{{ currentUser()?.username || 'User' }}</div>
-      <button 
-        (click)="logout(); closeMobileMenu()"
-        class="w-full bg-clover hover:bg-clover-dark text-cream px-4 py-2 rounded-lg font-semibold transition">
-        Đăng xuất
-      </button>
-    </nav>
+<!-- NAVBAR -->
+<header class="navbar">
+  <div>
+    <div class="logo-text">ĐỒNG TÂM</div>
+    <div class="logo-sub">House Fashions</div>
   </div>
+
+  <ul class="nav-links">
+    <li><a href="#top">Trang chủ</a></li>
+    <li><a href="#services">Dịch vụ</a></li>
+    <li><a href="#projects">Dự án</a></li>
+    <li><a href="#about">Về chúng tôi</a></li>
+    <li><a href="#contact">Liên hệ</a></li>
+  </ul>
+
+  <div class="nav-right">
+    <span class="user-name">👤 {{ currentUser()?.username || 'Admin' }}</span>
+    <button class="btn-logout" (click)="logout()">Đăng xuất</button>
+  </div>
+
+  <!-- Mobile toggle -->
+  <button class="btn-logout" style="display:none" (click)="toggleMobileMenu()">☰</button>
 </header>
 
-<!-- Hero Section -->
-<section class="bg-gradient-to-br from-navy to-clover-dark py-20 px-4">
-  <div class="max-w-7xl mx-auto text-center">
-    <h2 class="text-5xl font-bold text-cream mb-6">
-      Biến không gian của bạn thành tác phẩm nghệ thuật
-    </h2>
-    <p class="text-xl text-cream opacity-90 mb-10 max-w-3xl mx-auto">
-      Chúng tôi chuyên thiết kế và thi công nội thất cao cấp với đẳng cấp và tinh tế.
-      Mỗi không gian là một câu chuyện, mỗi thiết kế là một biểu hiện của phong cách sống.
+<!-- Mobile nav -->
+<div class="mobile-nav" *ngIf="mobileMenuOpen">
+  <a href="#top" (click)="closeMobileMenu()">Trang chủ</a>
+  <a href="#services" (click)="closeMobileMenu()">Dịch vụ</a>
+  <a href="#projects" (click)="closeMobileMenu()">Dự án</a>
+  <a href="#about" (click)="closeMobileMenu()">Về chúng tôi</a>
+  <a href="#contact" (click)="closeMobileMenu()">Liên hệ</a>
+</div>
+
+<!-- ─── HERO ─── -->
+<section id="top" class="hero">
+  <div class="hero-bg-pattern"></div>
+
+  <div class="hero-content">
+    <span class="hero-label">Angular · Spring Boot · MySQL</span>
+    <h1 class="hero-title">
+      Kiến tạo<br>
+      không gian <span>sống</span><br>
+      đẳng cấp
+    </h1>
+    <p class="hero-desc">
+      Chúng tôi chuyên thiết kế và thi công nội thất cao cấp. Mỗi không gian
+      là một tác phẩm nghệ thuật phản ánh phong cách và cá tính riêng của bạn.
     </p>
-    <div class="flex gap-4 justify-center flex-wrap">
-      <button class="bg-gold hover:bg-gold-dark text-navy px-8 py-3 rounded-lg font-semibold transition shadow-lg">
-        Xem dự án
+    <div class="hero-btns">
+      <button class="btn-primary" (click)="scrollTo('projects')">Xem dự án</button>
+      <button class="btn-outline" (click)="scrollTo('contact')">Liên hệ ngay</button>
+    </div>
+  </div>
+
+  <!-- Stats floating cards -->
+  <div class="hero-decor">
+    <div class="hero-stat">
+      <div class="hero-stat-num">500+</div>
+      <div class="hero-stat-label">Dự án hoàn thành</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">12+</div>
+      <div class="hero-stat-label">Năm kinh nghiệm</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">98%</div>
+      <div class="hero-stat-label">Khách hài lòng</div>
+    </div>
+  </div>
+
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- ─── SERVICES ─── -->
+<section id="services" class="services">
+  <div class="section-header">
+    <span class="section-label">Dịch vụ của chúng tôi</span>
+    <h2 class="section-title">Giải pháp nội thất toàn diện</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="services-grid">
+    <div class="service-card">
+      <span class="service-num">01</span>
+      <span class="service-icon">🏛️</span>
+      <div class="service-title">Thiết kế nội thất</div>
+      <p class="service-desc">Thiết kế không gian sống theo phong cách và nhu cầu riêng. Từ concept đến bản vẽ kỹ thuật chi tiết.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-num">02</span>
+      <span class="service-icon">🔨</span>
+      <div class="service-title">Thi công & lắp ráp</div>
+      <p class="service-desc">Thi công chuyên nghiệp với đội thợ lành nghề, đảm bảo tiến độ và chất lượng vượt trội.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-num">03</span>
+      <span class="service-icon">💡</span>
+      <div class="service-title">Tư vấn miễn phí</div>
+      <p class="service-desc">Đội ngũ chuyên gia tư vấn giải pháp nội thất tối ưu, phù hợp ngân sách và thẩm mỹ của bạn.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-num">04</span>
+      <span class="service-icon">🛋️</span>
+      <div class="service-title">Nội thất theo yêu cầu</div>
+      <p class="service-desc">Sản xuất đồ nội thất theo đặt hàng với vật liệu cao cấp, thiết kế độc quyền cho từng khách hàng.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-num">05</span>
+      <span class="service-icon">🏗️</span>
+      <div class="service-title">Cải tạo & nâng cấp</div>
+      <p class="service-desc">Cải tạo không gian cũ, nâng cấp hiện đại hóa theo xu hướng mới nhất với chi phí hợp lý.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-num">06</span>
+      <span class="service-icon">🛡️</span>
+      <div class="service-title">Bảo hành & bảo trì</div>
+      <p class="service-desc">Cam kết bảo hành dài hạn, dịch vụ bảo trì định kỳ giữ không gian luôn hoàn hảo theo thời gian.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PROJECTS ─── -->
+<section id="projects" class="projects">
+  <div class="section-header">
+    <span class="section-label">Công trình tiêu biểu</span>
+    <h2 class="section-title">Những dự án nổi bật</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="projects-grid">
+    <!-- Card 1 - large -->
+    <div class="project-card">
+      <div class="project-bg grad-1" style="height:100%; width:100%; position:absolute; inset:0;">
+        <div class="project-placeholder">🏙️</div>
+      </div>
+      <div class="project-overlay"></div>
+      <div class="project-info">
+        <div class="project-cat">Căn hộ cao cấp</div>
+        <div class="project-name">Penthouse The Metropole</div>
+      </div>
+      <div class="project-label">
+        <div class="project-label-cat">Căn hộ · 2024</div>
+        <div class="project-label-name">Penthouse The Metropole</div>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="project-card">
+      <div class="project-bg grad-2" style="height:100%; width:100%; position:absolute; inset:0;">
+        <div class="project-placeholder">🏢</div>
+      </div>
+      <div class="project-overlay"></div>
+      <div class="project-info">
+        <div class="project-cat">Văn phòng</div>
+        <div class="project-name">Executive Office Suite</div>
+      </div>
+      <div class="project-label">
+        <div class="project-label-cat">Văn phòng · 2024</div>
+        <div class="project-label-name">Executive Office Suite</div>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="project-card">
+      <div class="project-bg grad-3" style="height:100%; width:100%; position:absolute; inset:0;">
+        <div class="project-placeholder">🛏️</div>
+      </div>
+      <div class="project-overlay"></div>
+      <div class="project-info">
+        <div class="project-cat">Phòng ngủ</div>
+        <div class="project-name">Master Bedroom Luxury</div>
+      </div>
+      <div class="project-label">
+        <div class="project-label-cat">Biệt thự · 2023</div>
+        <div class="project-label-name">Master Bedroom</div>
+      </div>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="project-card">
+      <div class="project-bg grad-4" style="height:100%; width:100%; position:absolute; inset:0;">
+        <div class="project-placeholder">🍽️</div>
+      </div>
+      <div class="project-overlay"></div>
+      <div class="project-info">
+        <div class="project-cat">Nhà hàng</div>
+        <div class="project-name">Fine Dining Restaurant</div>
+      </div>
+      <div class="project-label">
+        <div class="project-label-cat">Nhà hàng · 2023</div>
+        <div class="project-label-name">Fine Dining</div>
+      </div>
+    </div>
+
+    <!-- Card 5 -->
+    <div class="project-card">
+      <div class="project-bg grad-5" style="height:100%; width:100%; position:absolute; inset:0;">
+        <div class="project-placeholder">🛁</div>
+      </div>
+      <div class="project-overlay"></div>
+      <div class="project-info">
+        <div class="project-cat">Phòng tắm</div>
+        <div class="project-name">Spa Bathroom Retreat</div>
+      </div>
+      <div class="project-label">
+        <div class="project-label-cat">Biệt thự · 2023</div>
+        <div class="project-label-name">Spa Bathroom</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── ABOUT STRIP ─── -->
+<section id="about" class="about-strip">
+  <div class="about-image">
+    <span style="font-size:100px; opacity:.15">🏛️</span>
+  </div>
+  <div class="about-content">
+    <span class="section-label">Về chúng tôi</span>
+    <h2 class="section-title">Hơn 12 năm kiến tạo không gian sống</h2>
+    <div class="section-line"></div>
+    <p class="about-text">
+      Đồng Tâm là công ty thiết kế và thi công nội thất cao cấp với đội ngũ hơn 50 chuyên gia giàu kinh nghiệm.
+      Chúng tôi cam kết mang đến những giải pháp nội thất độc đáo, tinh tế và bền vững cho mỗi không gian sống.
+    </p>
+    <div class="about-stats">
+      <div>
+        <div class="astat-num">500+</div>
+        <div class="astat-label">Dự án hoàn thành</div>
+      </div>
+      <div>
+        <div class="astat-num">50+</div>
+        <div class="astat-label">Chuyên gia thiết kế</div>
+      </div>
+      <div>
+        <div class="astat-num">12+</div>
+        <div class="astat-label">Năm kinh nghiệm</div>
+      </div>
+      <div>
+        <div class="astat-num">98%</div>
+        <div class="astat-label">Khách hài lòng</div>
+      </div>
+    </div>
+    <button class="btn-primary" (click)="scrollTo('contact')">Tư vấn miễn phí</button>
+  </div>
+</section>
+
+<!-- ─── CONTACT ─── -->
+<section id="contact" class="contact">
+  <div class="contact-text">
+    <span class="section-label">Liên hệ</span>
+    <h2 class="section-title">Hãy để chúng tôi đồng hành cùng bạn</h2>
+    <div class="section-line"></div>
+    <p class="contact-desc">
+      Với đội ngũ chuyên gia giàu kinh nghiệm, chúng tôi sẵn sàng tư vấn và đưa ra
+      giải pháp nội thất tối ưu nhất cho không gian của bạn.
+    </p>
+    <div class="contact-info-item">
+      <span class="info-icon">📍</span>
+      <div>
+        <div class="info-label">Địa chỉ</div>
+        <div class="info-val">123 Trần Hưng Đạo, Quận 1, TP. Hồ Chí Minh</div>
+      </div>
+    </div>
+    <div class="contact-info-item">
+      <span class="info-icon">📞</span>
+      <div>
+        <div class="info-label">Điện thoại</div>
+        <div class="info-val">0909 123 456 — Phục vụ 24/7</div>
+      </div>
+    </div>
+    <div class="contact-info-item">
+      <span class="info-icon">📧</span>
+      <div>
+        <div class="info-label">Email</div>
+        <div class="info-val">info@dongtam.com.vn</div>
+      </div>
+    </div>
+    <div class="contact-info-item">
+      <span class="info-icon">⏰</span>
+      <div>
+        <div class="info-label">Giờ làm việc</div>
+        <div class="info-val">Thứ 2 — Thứ 7 &nbsp;|&nbsp; 8:00 — 18:00</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="contact-form-wrap">
+    <div class="form-title">Liên hệ tư vấn khách hàng</div>
+    <form (ngSubmit)="submitContact()">
+      <div class="form-group">
+        <input type="text" [(ngModel)]="contactForm.name" name="name" placeholder="Họ và tên của bạn" />
+      </div>
+      <div class="form-group">
+        <input type="tel" [(ngModel)]="contactForm.phone" name="phone" placeholder="Số điện thoại" />
+      </div>
+      <div class="form-group">
+        <input type="email" [(ngModel)]="contactForm.email" name="email" placeholder="Email của bạn" />
+      </div>
+      <div class="form-group">
+        <textarea [(ngModel)]="contactForm.message" name="message" placeholder="Ghi chú / Yêu cầu của bạn"></textarea>
+      </div>
+      <button type="submit" class="btn-submit" [disabled]="isSubmitting">
+        {{ isSubmitting ? 'Đang gửi...' : 'Gửi thông tin' }}
       </button>
-      <button class="border-2 border-gold text-gold hover:bg-gold hover:text-navy px-8 py-3 rounded-lg font-semibold transition">
-        Liên hệ ngay
-      </button>
-    </div>
+      <p class="submit-msg" *ngIf="submitMessage">{{ submitMessage }}</p>
+    </form>
   </div>
 </section>
 
-<!-- Features Section -->
-<section id="services" class="py-16 px-4 bg-navy">
-  <div class="max-w-7xl mx-auto">
-    <h3 class="text-3xl font-bold text-center text-cream mb-12">Dịch vụ của chúng tôi</h3>
-    <div class="grid md:grid-cols-3 gap-8">
-      <div class="p-6 bg-clover-dark rounded-lg text-center hover:shadow-lg hover:border-l-4 border-gold transition">
-        <div class="text-4xl mb-4">🏠</div>
-        <h4 class="text-xl font-semibold text-cream mb-3">Thiết kế nội thất</h4>
-        <p class="text-cream opacity-80">Thiết kế không gian sống theo phong cách và nhu cầu của bạn</p>
-      </div>
-      <div class="p-6 bg-clover rounded-lg text-center hover:shadow-lg hover:border-l-4 border-gold transition">
-        <div class="text-4xl mb-4">🛠️</div>
-        <h4 class="text-xl font-semibold text-cream mb-3">Thi công & lắp ráp</h4>
-        <p class="text-cream opacity-80">Thi công chuyên nghiệp với đội thợ lành nghề và kinh nghiệm</p>
-      </div>
-      <div class="p-6 bg-mint rounded-lg text-center hover:shadow-lg hover:border-l-4 border-gold transition">
-        <div class="text-4xl mb-4">✨</div>
-        <h4 class="text-xl font-semibold text-navy mb-3">Tư vấn miễn phí</h4>
-        <p class="text-navy opacity-80">Tư vấn giải pháp nội thất tốt nhất cho không gian của bạn</p>
-      </div>
+<!-- ─── FOOTER ─── -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-logo">ĐỒNG TÂM</div>
+      <div class="footer-logo-sub">House Fashions</div>
+      <p class="footer-tagline">Kiến tạo không gian, định hình phong cách, dẫn đầu trong lĩnh vực thiết kế và nội thất cao cấp.</p>
+      <div class="footer-phone">0909 123 456</div>
+    </div>
+    <div>
+      <div class="footer-col-title">Dịch vụ</div>
+      <ul class="footer-links">
+        <li><a href="#services">Thiết kế nội thất</a></li>
+        <li><a href="#services">Thi công & lắp ráp</a></li>
+        <li><a href="#services">Tư vấn miễn phí</a></li>
+        <li><a href="#services">Nội thất theo yêu cầu</a></li>
+        <li><a href="#services">Cải tạo & nâng cấp</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Chính sách</div>
+      <ul class="footer-links">
+        <li><a href="#">Chính sách bảo hành</a></li>
+        <li><a href="#">Hướng dẫn thanh toán</a></li>
+        <li><a href="#">Chính sách hoàn tiền</a></li>
+        <li><a href="#">Điều khoản sử dụng</a></li>
+        <li><a href="#">Bảo mật thông tin</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Chi nhánh</div>
+      <p class="footer-addr">🏢 Hồ Chí Minh<br>123 Trần Hưng Đạo, Q.1</p>
+      <p class="footer-addr">🏢 Hà Nội<br>45 Hoàng Diệu, Ba Đình</p>
+      <p class="footer-addr">🏢 Đà Nẵng<br>78 Bạch Đằng, Hải Châu</p>
     </div>
   </div>
-</section>
 
-<!-- Portfolio Preview -->
-<section id="portfolio" class="py-16 px-4 bg-clover-dark">
-  <div class="max-w-7xl mx-auto">
-    <h3 class="text-3xl font-bold text-center text-cream mb-12">Dự án tiêu biểu</h3>
-    <div class="grid md:grid-cols-2 gap-8">
-      <div class="bg-gold rounded-lg h-64 flex items-center justify-center text-navy font-semibold text-xl hover:shadow-xl transition">
-        Dự án căn hộ cao cấp
-      </div>
-      <div class="bg-clover rounded-lg h-64 flex items-center justify-center text-cream font-semibold text-xl hover:shadow-xl transition">
-        Dự án văn phòng sang trọng
-      </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 ĐỒNG TÂM — Thiết kế nội thất. Tất cả quyền được bảo lưu.</span>
+    <div class="social-links">
+      <a class="social-link" href="#">f</a>
+      <a class="social-link" href="#">in</a>
+      <a class="social-link" href="#">yt</a>
     </div>
-  </div>
-</section>
-
-<!-- Contact Section -->
-<section id="contact" class="bg-clover-dark text-cream py-16 px-4">
-  <div class="max-w-7xl mx-auto">
-    <h3 class="text-3xl font-bold text-center mb-12 text-cream">Liên hệ với chúng tôi</h3>
-    <div class="grid md:grid-cols-2 gap-10">
-      <!-- Contact Info -->
-      <div class="space-y-6">
-        <div>
-          <h4 class="text-lg font-semibold mb-2 text-gold">📍 Địa chỉ</h4>
-          <p class="text-cream opacity-80">123 Đường Trần Hưng Đạo, Quận 1, TP.HCM</p>
-        </div>
-        <div>
-          <h4 class="text-lg font-semibold mb-2 text-gold">📞 Điện thoại</h4>
-          <p class="text-cream opacity-80">0909 123 456</p>
-        </div>
-        <div>
-          <h4 class="text-lg font-semibold mb-2 text-gold">📧 Email</h4>
-          <p class="text-cream opacity-80">info@dongtam.com</p>
-        </div>
-        <div>
-          <h4 class="text-lg font-semibold mb-2 text-gold">⏰ Giờ làm việc</h4>
-          <p class="text-cream opacity-80">Thứ 2 - Thứ 7: 8:00 - 18:00</p>
-        </div>
-      </div>
-
-      <!-- Contact Form -->
-      <form (ngSubmit)="submitContact()" class="space-y-4">
-        <input
-          type="text"
-          [(ngModel)]="contactForm.name"
-          name="name"
-          placeholder="Họ và tên"
-          class="w-full px-4 py-3 bg-clover border border-gold rounded-lg focus:outline-none focus:ring-2 focus:ring-gold text-cream placeholder-cream placeholder-opacity-60"
-        />
-        <input
-          type="email"
-          [(ngModel)]="contactForm.email"
-          name="email"
-          placeholder="Email"
-          class="w-full px-4 py-3 bg-clover border border-gold rounded-lg focus:outline-none focus:ring-2 focus:ring-gold text-cream placeholder-cream placeholder-opacity-60"
-        />
-        <input
-          type="tel"
-          [(ngModel)]="contactForm.phone"
-          name="phone"
-          placeholder="Số điện thoại (tùy chọn)"
-          class="w-full px-4 py-3 bg-clover border border-gold rounded-lg focus:outline-none focus:ring-2 focus:ring-gold text-cream placeholder-cream placeholder-opacity-60"
-        />
-        <textarea
-          [(ngModel)]="contactForm.message"
-          name="message"
-          placeholder="Tin nhắn của bạn"
-          rows="4"
-          class="w-full px-4 py-3 bg-clover border border-gold rounded-lg focus:outline-none focus:ring-2 focus:ring-gold text-cream placeholder-cream placeholder-opacity-60"
-        ></textarea>
-        <button
-          type="submit"
-          [disabled]="isSubmitting"
-          class="w-full bg-gold hover:bg-gold-dark disabled:bg-gray-700 text-navy font-semibold py-3 rounded-lg transition"
-        >
-          {{ isSubmitting ? 'Đang gửi...' : 'Gửi tin nhắn' }}
-        </button>
-        <p *ngIf="submitMessage" class="text-center text-gold text-sm">
-          {{ submitMessage }}
-        </p>
-      </form>
-    </div>
-  </div>
-</section>
-
-<!-- Footer -->
-<footer class="bg-navy text-cream py-8 px-4 border-t-4 border-gold text-center">
-  <div class="max-w-7xl mx-auto">
-    <p>&copy; 2026 ĐỒNG TÂM - Thiết kế nội thất. Tất cả quyền được bảo lưu.</p>
   </div>
 </footer>

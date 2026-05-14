@@ -50,6 +50,10 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['/login']);
   }
 
+  scrollTo(id: string): void {
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+  }
+
   submitContact(): void {
     if (!this.contactForm.name || !this.contactForm.email || !this.contactForm.message) {
       this.submitMessage = 'Vui lòng điền đầy đủ thông tin';
