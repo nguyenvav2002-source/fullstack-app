@@ -13,7 +13,7 @@
 
   <ul class="nav-links">
     <li><a href="#top">Trang chủ</a></li>
-    <li><a href="#services">Dịch vụ</a></li>
+    <li><a (click)="goService(0)" style="cursor:pointer">Dịch vụ</a></li>
     <li><a href="#projects">Dự án</a></li>
     <li><a href="#about">Về chúng tôi</a></li>
     <li><a href="#contact">Liên hệ</a></li>
@@ -31,7 +31,7 @@
 <!-- Mobile nav -->
 <div class="mobile-nav" *ngIf="mobileMenuOpen">
   <a href="#top" (click)="closeMobileMenu()">Trang chủ</a>
-  <a href="#services" (click)="closeMobileMenu()">Dịch vụ</a>
+  <a (click)="goService(0); closeMobileMenu()" style="cursor:pointer">Dịch vụ</a>
   <a href="#projects" (click)="closeMobileMenu()">Dự án</a>
   <a href="#about" (click)="closeMobileMenu()">Về chúng tôi</a>
   <a href="#contact" (click)="closeMobileMenu()">Liên hệ</a>
@@ -39,14 +39,13 @@
 
 <!-- ─── HERO ─── -->
 <section id="top" class="hero">
-  <!-- Real generated background image -->
+  <!-- 3D Interior Render with Ken Burns motion effect -->
   <div class="hero-image-wrap">
-    <img src="assets/images/hero_interior.png" alt="Nội thất cao cấp Đồng Tâm" class="hero-img" />
+    <img src="assets/images/hero_3d_render.png" alt="Đồng Tâm – Thiết kế nội thất cao cấp" class="hero-img hero-img--animated" />
   </div>
   <div class="hero-overlay"></div>
 
   <div class="hero-content">
-    <span class="hero-label">Angular · Spring Boot · MySQL</span>
     <h1 class="hero-title">
       Kiến tạo<br>
       không gian <span>sống</span><br>
@@ -88,46 +87,52 @@
 <section id="services" class="services">
   <div class="section-header">
     <span class="section-label">Dịch vụ của chúng tôi</span>
-    <h2 class="section-title">Giải pháp nội thất toàn diện</h2>
+    <h2 class="section-title">GIẢI PHÁP NỘI THẤT TOÀN DIỆN</h2>
     <div class="section-line"></div>
   </div>
 
   <div class="services-grid">
-    <div class="service-card">
+    <div class="service-card" (click)="goService(0)" style="cursor:pointer">
       <span class="service-num">01</span>
       <span class="service-icon">🏛️</span>
-      <div class="service-title">Thiết kế nội thất</div>
+      <h4 class="service-title">Thiết kế nội thất</h4>
       <p class="service-desc">Thiết kế không gian sống theo phong cách và nhu cầu riêng. Từ concept đến bản vẽ kỹ thuật chi tiết.</p>
+      <span class="service-more">Xem chi tiết →</span>
     </div>
-    <div class="service-card">
+    <div class="service-card" (click)="goService(1)" style="cursor:pointer">
       <span class="service-num">02</span>
       <span class="service-icon">🔨</span>
-      <div class="service-title">Thi công &amp; lắp ráp</div>
+      <h4 class="service-title">Thi công &amp; lắp ráp</h4>
       <p class="service-desc">Thi công chuyên nghiệp với đội thợ lành nghề, đảm bảo tiến độ và chất lượng vượt trội.</p>
+      <span class="service-more">Xem chi tiết →</span>
     </div>
-    <div class="service-card">
+    <div class="service-card" (click)="goService(2)" style="cursor:pointer">
       <span class="service-num">03</span>
       <span class="service-icon">💡</span>
-      <div class="service-title">Tư vấn miễn phí</div>
+      <h4 class="service-title">Tư vấn miễn phí</h4>
       <p class="service-desc">Đội ngũ chuyên gia tư vấn giải pháp nội thất tối ưu, phù hợp ngân sách và thẩm mỹ của bạn.</p>
+      <span class="service-more">Xem chi tiết →</span>
     </div>
-    <div class="service-card">
+    <div class="service-card" (click)="goService(3)" style="cursor:pointer">
       <span class="service-num">04</span>
       <span class="service-icon">🛋️</span>
-      <div class="service-title">Nội thất theo yêu cầu</div>
+      <h4 class="service-title">Nội thất theo yêu cầu</h4>
       <p class="service-desc">Sản xuất đồ nội thất theo đặt hàng với vật liệu cao cấp, thiết kế độc quyền cho từng khách hàng.</p>
+      <span class="service-more">Xem chi tiết →</span>
     </div>
-    <div class="service-card">
+    <div class="service-card" (click)="goService(4)" style="cursor:pointer">
       <span class="service-num">05</span>
       <span class="service-icon">🏗️</span>
-      <div class="service-title">Cải tạo &amp; nâng cấp</div>
+      <h4 class="service-title">Cải tạo &amp; nâng cấp</h4>
       <p class="service-desc">Cải tạo không gian cũ, nâng cấp hiện đại hóa theo xu hướng mới nhất với chi phí hợp lý.</p>
+      <span class="service-more">Xem chi tiết →</span>
     </div>
-    <div class="service-card">
+    <div class="service-card" (click)="goService(5)" style="cursor:pointer">
       <span class="service-num">06</span>
       <span class="service-icon">🛡️</span>
-      <div class="service-title">Bảo hành &amp; bảo trì</div>
+      <h4 class="service-title">Bảo hành &amp; bảo trì</h4>
       <p class="service-desc">Cam kết bảo hành dài hạn, dịch vụ bảo trì định kỳ giữ không gian luôn hoàn hảo theo thời gian.</p>
+      <span class="service-more">Xem chi tiết →</span>
     </div>
   </div>
 </section>
@@ -136,7 +141,7 @@
 <section id="projects" class="projects">
   <div class="section-header">
     <span class="section-label">Công trình tiêu biểu</span>
-    <h2 class="section-title">Những dự án nổi bật</h2>
+    <h2 class="section-title">NHỮNG DỰ ÁN NỔI BẬT</h2>
     <div class="section-line"></div>
   </div>
 
@@ -149,10 +154,6 @@
         <div class="project-cat">Căn hộ cao cấp</div>
         <div class="project-name">Penthouse The Metropole</div>
       </div>
-      <div class="project-label">
-        <div class="project-label-cat">Căn hộ · 2024</div>
-        <div class="project-label-name">Penthouse The Metropole</div>
-      </div>
     </div>
 
     <!-- Card 2 -->
@@ -162,10 +163,6 @@
       <div class="project-info">
         <div class="project-cat">Văn phòng</div>
         <div class="project-name">Executive Office Suite</div>
-      </div>
-      <div class="project-label">
-        <div class="project-label-cat">Văn phòng · 2024</div>
-        <div class="project-label-name">Executive Office Suite</div>
       </div>
     </div>
 
@@ -177,10 +174,6 @@
         <div class="project-cat">Phòng ngủ</div>
         <div class="project-name">Master Bedroom Luxury</div>
       </div>
-      <div class="project-label">
-        <div class="project-label-cat">Biệt thự · 2023</div>
-        <div class="project-label-name">Master Bedroom</div>
-      </div>
     </div>
 
     <!-- Card 4 -->
@@ -191,10 +184,6 @@
         <div class="project-cat">Nhà hàng</div>
         <div class="project-name">Fine Dining Restaurant</div>
       </div>
-      <div class="project-label">
-        <div class="project-label-cat">Nhà hàng · 2023</div>
-        <div class="project-label-name">Fine Dining</div>
-      </div>
     </div>
 
     <!-- Card 5 -->
@@ -204,10 +193,6 @@
       <div class="project-info">
         <div class="project-cat">Phòng tắm</div>
         <div class="project-name">Spa Bathroom Retreat</div>
-      </div>
-      <div class="project-label">
-        <div class="project-label-cat">Biệt thự · 2023</div>
-        <div class="project-label-name">Spa Bathroom</div>
       </div>
     </div>
   </div>
@@ -231,15 +216,15 @@
     <div class="about-stats">
       <div>
         <div class="astat-num">500+</div>
-        <div class="astat-label">Dự án hoàn thành</div>
+        <h4 class="astat-label">Dự án hoàn thành</h4>
       </div>
       <div>
         <div class="astat-num">50+</div>
-        <div class="astat-label">Chuyên gia thiết kế</div>
+        <h4 class="astat-label">Chuyên gia thiết kế</h4>
       </div>
       <div>
         <div class="astat-num">12+</div>
-        <div class="astat-label">Năm kinh nghiệm</div>
+        <h4 class="astat-label">Năm kinh nghiệm</h4>
       </div>
       <div>
         <div class="astat-num">98%</div>

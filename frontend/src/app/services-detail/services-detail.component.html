@@ -1,0 +1,177 @@
+<!-- NAVBAR -->
+<header class="navbar">
+  <div class="logo-wrap" (click)="goHome()" style="cursor:pointer">
+    <div class="logo-text">ĐỒNG TÂM</div>
+    <div class="logo-sub">House Fashions</div>
+  </div>
+  <ul class="nav-links">
+    <li><a (click)="goHome()" style="cursor:pointer">Trang chủ</a></li>
+    <li><a href="#service-tabs">Dịch vụ</a></li>
+    <li><a (click)="goHome()" style="cursor:pointer">Dự án</a></li>
+    <li><a (click)="goHome()" style="cursor:pointer">Về chúng tôi</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+  <div class="nav-right">
+    <span class="user-name">👤 {{ currentUser()?.username || 'Admin' }}</span>
+    <button class="btn-logout" (click)="logout()">Đăng xuất</button>
+  </div>
+</header>
+
+<!-- HERO BANNER -->
+<section class="svc-hero">
+  <div class="svc-hero-overlay"></div>
+  <div class="svc-hero-content">
+    <div class="breadcrumb"><span (click)="goHome()" style="cursor:pointer">Trang chủ</span> / <span>Dịch vụ</span> / <span class="bc-active">{{ currentService.title }}</span></div>
+    <h1 class="svc-hero-title">{{ currentService.title }}</h1>
+    <p class="svc-hero-sub">{{ currentService.subtitle }}</p>
+  </div>
+</section>
+
+<!-- SERVICE TABS -->
+<nav class="service-tabs" id="service-tabs">
+  <div class="tabs-inner">
+    <button *ngFor="let s of navServices" class="tab-btn" [class.active]="s.id === currentService.id" (click)="goService(s.id)">
+      {{ s.label }}
+    </button>
+  </div>
+</nav>
+
+<!-- SERVICE INTRO -->
+<section class="svc-intro">
+  <div class="svc-intro-inner">
+    <div class="svc-intro-text">
+      <span class="section-label">Về dịch vụ</span>
+      <h2 class="section-title dark">{{ currentService.title }}</h2>
+      <div class="section-line"></div>
+      <p class="svc-desc">{{ currentService.description }}</p>
+    </div>
+    <div class="svc-includes">
+      <div class="includes-title">Dịch vụ bao gồm:</div>
+      <div class="includes-grid">
+        <div class="include-item" *ngFor="let inc of currentService.includes">
+          <span class="inc-icon">{{ inc.icon }}</span>
+          <span class="inc-label">{{ inc.label }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DESIGN PROCESS -->
+<section class="svc-process">
+  <div class="process-header">
+    <span class="section-label">Quy trình thực hiện</span>
+    <h2 class="section-title">Từng bước chuyên nghiệp</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="process-tabs">
+    <button *ngFor="let step of currentService.process; let i = index"
+      class="process-tab-btn" [class.active]="activeProcess === i"
+      (click)="activeProcess = i">
+      <span class="ptab-num">{{ step.num }}</span>
+      <span class="ptab-label">{{ step.title }}</span>
+    </button>
+  </div>
+  <div class="process-content">
+    <div class="process-card" *ngFor="let step of currentService.process; let i = index" [class.visible]="activeProcess === i">
+      <div class="pc-num">{{ step.num }}</div>
+      <div class="pc-body">
+        <div class="pc-title">{{ step.title }}</div>
+        <p class="pc-desc">{{ step.desc }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="svc-pricing">
+  <div class="pricing-header">
+    <span class="section-label">Báo giá</span>
+    <h2 class="section-title dark">Bảng giá dịch vụ</h2>
+    <div class="section-line"></div>
+    <p class="pricing-sub">Đơn vị: đồng/m². Giá có thể thay đổi theo quy mô và yêu cầu cụ thể.</p>
+  </div>
+  <div class="pricing-grid">
+    <div class="pricing-card" *ngFor="let p of currentService.pricing" [class.featured]="p.featured">
+      <div class="pc-badge" *ngIf="p.featured">Phổ biến</div>
+      <div class="price-tier">{{ p.tier }}</div>
+      <div class="price-value">{{ p.price }}</div>
+      <div class="price-unit">đồng/m²</div>
+      <ul class="price-features">
+        <li *ngFor="let f of p.features"><span class="check">✓</span> {{ f }}</li>
+      </ul>
+      <button class="btn-contact-price">Liên hệ ngay</button>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="svc-faq" id="faq">
+  <div class="faq-header">
+    <span class="section-label">Câu hỏi thường gặp</span>
+    <h2 class="section-title dark">Giải đáp thắc mắc</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="faq-list">
+    <div class="faq-item" *ngFor="let f of currentService.faqs; let i = index" [class.open]="activeFaq === i" (click)="toggleFaq(i)">
+      <div class="faq-q">
+        <span>{{ f.q }}</span>
+        <span class="faq-icon">{{ activeFaq === i ? '−' : '+' }}</span>
+      </div>
+      <div class="faq-a" [style.display]="activeFaq === i ? 'block' : 'none'">{{ f.a }}</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="svc-cta">
+  <div class="cta-inner">
+    <h2 class="cta-title">Sẵn sàng bắt đầu dự án của bạn?</h2>
+    <p class="cta-desc">Liên hệ ngay để được tư vấn miễn phí và nhận báo giá chi tiết trong 24h.</p>
+    <div class="cta-btns">
+      <button class="btn-primary" (click)="goHome()">Xem dự án thực tế</button>
+      <a class="btn-outline-cta" href="tel:0909123456">☎ 0909 123 456</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-logo">ĐỒNG TÂM</div>
+      <div class="footer-logo-sub">House Fashions</div>
+      <p class="footer-tagline">Kiến tạo không gian, định hình phong cách, dẫn đầu thiết kế nội thất cao cấp.</p>
+      <div class="footer-phone">0909 123 456</div>
+    </div>
+    <div>
+      <div class="footer-col-title">Dịch vụ</div>
+      <ul class="footer-links">
+        <li *ngFor="let s of navServices"><a (click)="goService(s.id)" style="cursor:pointer">{{ s.label }}</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Chính sách</div>
+      <ul class="footer-links">
+        <li><a href="#">Bảo hành công trình</a></li>
+        <li><a href="#">Hướng dẫn thanh toán</a></li>
+        <li><a href="#">Điều khoản sử dụng</a></li>
+        <li><a href="#">Bảo mật thông tin</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Liên hệ</div>
+      <p class="footer-addr">📍 123 Trần Hưng Đạo, Q.1, TP.HCM</p>
+      <p class="footer-addr">📧 info&#64;dongtam.com.vn</p>
+      <p class="footer-addr">⏰ T2–T7 | 8:00–18:00</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 ĐỒNG TÂM — Thiết kế nội thất. Tất cả quyền được bảo lưu.</span>
+    <div class="social-links">
+      <a class="social-link" href="#">f</a>
+      <a class="social-link" href="#">in</a>
+      <a class="social-link" href="#">yt</a>
+    </div>
+  </div>
+</footer>

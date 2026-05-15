@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthStateService } from '../auth/auth-state.service';
 
+const SERVICE_IDS = ['thiet-ke-noi-that','thi-cong-lap-rap','tu-van-mien-phi','noi-that-theo-yeu-cau','cai-tao-nang-cap','bao-hanh-bao-tri'];
+
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -52,6 +54,11 @@ export class HomeComponent implements OnInit {
 
   scrollTo(id: string): void {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+  }
+
+  goService(index: number): void {
+    const id = SERVICE_IDS[index] || SERVICE_IDS[0];
+    this.router.navigate(['/services', id]);
   }
 
   submitContact(): void {
