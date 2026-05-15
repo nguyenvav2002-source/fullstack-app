@@ -25,7 +25,7 @@
   </div>
 
   <!-- Mobile toggle -->
-  <button class="btn-logout" style="display:none" (click)="toggleMobileMenu()">☰</button>
+  <button class="btn-menu-mobile" (click)="toggleMobileMenu()">☰</button>
 </header>
 
 <!-- Mobile nav -->
@@ -39,7 +39,11 @@
 
 <!-- ─── HERO ─── -->
 <section id="top" class="hero">
-  <div class="hero-bg-pattern"></div>
+  <!-- Real generated background image -->
+  <div class="hero-image-wrap">
+    <img src="assets/images/hero_interior.png" alt="Nội thất cao cấp Đồng Tâm" class="hero-img" />
+  </div>
+  <div class="hero-overlay"></div>
 
   <div class="hero-content">
     <span class="hero-label">Angular · Spring Boot · MySQL</span>
@@ -98,7 +102,7 @@
     <div class="service-card">
       <span class="service-num">02</span>
       <span class="service-icon">🔨</span>
-      <div class="service-title">Thi công & lắp ráp</div>
+      <div class="service-title">Thi công &amp; lắp ráp</div>
       <p class="service-desc">Thi công chuyên nghiệp với đội thợ lành nghề, đảm bảo tiến độ và chất lượng vượt trội.</p>
     </div>
     <div class="service-card">
@@ -116,13 +120,13 @@
     <div class="service-card">
       <span class="service-num">05</span>
       <span class="service-icon">🏗️</span>
-      <div class="service-title">Cải tạo & nâng cấp</div>
+      <div class="service-title">Cải tạo &amp; nâng cấp</div>
       <p class="service-desc">Cải tạo không gian cũ, nâng cấp hiện đại hóa theo xu hướng mới nhất với chi phí hợp lý.</p>
     </div>
     <div class="service-card">
       <span class="service-num">06</span>
       <span class="service-icon">🛡️</span>
-      <div class="service-title">Bảo hành & bảo trì</div>
+      <div class="service-title">Bảo hành &amp; bảo trì</div>
       <p class="service-desc">Cam kết bảo hành dài hạn, dịch vụ bảo trì định kỳ giữ không gian luôn hoàn hảo theo thời gian.</p>
     </div>
   </div>
@@ -138,10 +142,8 @@
 
   <div class="projects-grid">
     <!-- Card 1 - large -->
-    <div class="project-card">
-      <div class="project-bg grad-1" style="height:100%; width:100%; position:absolute; inset:0;">
-        <div class="project-placeholder">🏙️</div>
-      </div>
+    <div class="project-card project-card--large">
+      <img src="assets/images/project_penthouse.png" alt="Penthouse The Metropole" class="project-img" />
       <div class="project-overlay"></div>
       <div class="project-info">
         <div class="project-cat">Căn hộ cao cấp</div>
@@ -155,9 +157,7 @@
 
     <!-- Card 2 -->
     <div class="project-card">
-      <div class="project-bg grad-2" style="height:100%; width:100%; position:absolute; inset:0;">
-        <div class="project-placeholder">🏢</div>
-      </div>
+      <img src="assets/images/project_office.png" alt="Executive Office Suite" class="project-img" />
       <div class="project-overlay"></div>
       <div class="project-info">
         <div class="project-cat">Văn phòng</div>
@@ -171,9 +171,7 @@
 
     <!-- Card 3 -->
     <div class="project-card">
-      <div class="project-bg grad-3" style="height:100%; width:100%; position:absolute; inset:0;">
-        <div class="project-placeholder">🛏️</div>
-      </div>
+      <img src="assets/images/project_bedroom.png" alt="Master Bedroom Luxury" class="project-img" />
       <div class="project-overlay"></div>
       <div class="project-info">
         <div class="project-cat">Phòng ngủ</div>
@@ -187,9 +185,7 @@
 
     <!-- Card 4 -->
     <div class="project-card">
-      <div class="project-bg grad-4" style="height:100%; width:100%; position:absolute; inset:0;">
-        <div class="project-placeholder">🍽️</div>
-      </div>
+      <img src="assets/images/project_restaurant.png" alt="Fine Dining Restaurant" class="project-img" />
       <div class="project-overlay"></div>
       <div class="project-info">
         <div class="project-cat">Nhà hàng</div>
@@ -203,9 +199,7 @@
 
     <!-- Card 5 -->
     <div class="project-card">
-      <div class="project-bg grad-5" style="height:100%; width:100%; position:absolute; inset:0;">
-        <div class="project-placeholder">🛁</div>
-      </div>
+      <img src="assets/images/project_penthouse.png" alt="Spa Bathroom Retreat" class="project-img" style="object-position: right center;" />
       <div class="project-overlay"></div>
       <div class="project-info">
         <div class="project-cat">Phòng tắm</div>
@@ -222,7 +216,9 @@
 <!-- ─── ABOUT STRIP ─── -->
 <section id="about" class="about-strip">
   <div class="about-image">
-    <span style="font-size:100px; opacity:.15">🏛️</span>
+    <img src="assets/images/hero_interior.png" alt="Về Đồng Tâm" class="about-img" />
+    <div class="about-img-overlay"></div>
+    <div class="about-img-text">ĐỒNG TÂM</div>
   </div>
   <div class="about-content">
     <span class="section-label">Về chúng tôi</span>
@@ -282,7 +278,7 @@
       <span class="info-icon">📧</span>
       <div>
         <div class="info-label">Email</div>
-        <div class="info-val">info@dongtam.com.vn</div>
+        <div class="info-val">info&#64;dongtam.com.vn</div>
       </div>
     </div>
     <div class="contact-info-item">
@@ -330,10 +326,10 @@
       <div class="footer-col-title">Dịch vụ</div>
       <ul class="footer-links">
         <li><a href="#services">Thiết kế nội thất</a></li>
-        <li><a href="#services">Thi công & lắp ráp</a></li>
+        <li><a href="#services">Thi công &amp; lắp ráp</a></li>
         <li><a href="#services">Tư vấn miễn phí</a></li>
         <li><a href="#services">Nội thất theo yêu cầu</a></li>
-        <li><a href="#services">Cải tạo & nâng cấp</a></li>
+        <li><a href="#services">Cải tạo &amp; nâng cấp</a></li>
       </ul>
     </div>
     <div>
